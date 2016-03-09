@@ -43,5 +43,8 @@ public class HomeActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+        //getData();
     }
+
+
 }
