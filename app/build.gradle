@@ -44,4 +44,6 @@ dependencies {
 
     compile 'com.squareup.okhttp:okhttp:2.6.0' //OKHTTP
     compile 'com.google.code.gson:gson:2.3' // GSON
+
+    compile files('libs/androidannotations-api-3.2.jar')
 }

@@ -2,19 +2,26 @@ package com.letsreap.reap.activities;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.letsreap.reap.R;
+import com.letsreap.reap.beans.ResponseBean;
+import com.letsreap.reap.helpers.AjaxHelper;
 import com.letsreap.reap.helpers.DatabaseHelper;
 
+import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.EActivity;
 
+@EActivity(R.layout.activity_home)
 public class HomeActivity extends ActionBarActivity {
+
+    public static final String TAG = "HomeActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
     }
 
     @Override
@@ -43,8 +50,12 @@ public class HomeActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
-        //getData();
+        getData();
     }
 
-
+    @Background
+    void getData() {
+        ResponseBean responseBean = AjaxHelper.ajax();
+          Log.d(TAG,"Status="+responseBean.getStatus());
+    }
 }
